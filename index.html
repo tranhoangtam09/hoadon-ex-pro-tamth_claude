@@ -18,6 +18,29 @@
     <ul id="errs" class="errs"></ul>
   </section>
 
+  <section class="panel" aria-label="Xuất Excel">
+    <h2>Xuất Excel theo mẫu gốc</h2>
+    <p class="muted">Tải mẫu gốc của ngân hàng. Ứng dụng chỉ ghi dữ liệu từ dòng 3, giữ nguyên định dạng, tiêu đề và sheet hướng dẫn.</p>
+    <div class="tpls">
+      <div class="tpl" data-kind="transfer"><b>Mẫu chuyển khoản VND</b><label class="link">Chọn mẫu .xlsx<input type="file" accept=".xlsx" hidden></label><span class="st muted">Chưa tải mẫu</span>
+        <label class="opt">Đơn vị thụ hưởng lấy từ <select id="party"><option value="buyer">Người mua</option><option value="seller">Người bán</option></select></label>
+        <button class="btn go" disabled>Xuất Excel</button></div>
+      <div class="tpl" data-kind="compensation"><b>Mẫu bù đắp VND</b><label class="link">Chọn mẫu .xlsx<input type="file" accept=".xlsx" hidden></label><span class="st muted">Chưa tải mẫu</span>
+        <span class="muted">Đơn vị phát hành luôn là người bán.</span>
+        <button class="btn go" disabled>Xuất Excel</button></div>
+    </div>
+    <ul id="xerr" class="errs"></ul>
+  </section>
+
+  <section class="panel" aria-label="Gộp PDF và ảnh">
+    <h2>Gộp PDF / ảnh thành một PDF</h2>
+    <p class="muted">Tối đa 10 tệp mỗi lần (PDF, JPG, PNG, WEBP). Thứ tự trong danh sách là thứ tự trang.</p>
+    <div class="row"><label class="btn">Thêm tệp<input id="mpick" type="file" multiple hidden accept=".pdf,.jpg,.jpeg,.png,.webp"></label>
+      <button id="mfromsel" class="btn">Thêm từ mục đã chọn trong bảng</button>
+      <button id="mgo" class="btn go" disabled>Gộp và tải PDF</button><button id="mclear" class="btn">Xóa danh sách</button></div>
+    <ol id="mlist" class="mlist"></ol><ul id="merr" class="errs"></ul>
+  </section>
+
   <section class="tools">
     <input id="q" type="search" placeholder="Tìm theo tên tệp, đơn vị, MST, số hóa đơn">
     <select id="flt"><option value="">Mọi trạng thái</option></select>

@@ -1,3 +1,3 @@
-Đặt các thư viện (bản UMD/min, chạy offline) vào thư mục này ở Giai đoạn 3-5:
-jszip.min.js, pdf.min.js + pdf.worker.min.js, tesseract.min.js + worker + core + vie.traineddata, pdf-lib.min.js
-Giai đoạn 2 chưa cần, trừ jszip.min.js nếu muốn nạp ZIP.
+jszip.min.js   - JSZip 3.10.1 (MIT / GPLv3), dùng để đọc ZIP và vá tệp .xlsx
+pdf-lib.min.js - pdf-lib 1.17.1 (MIT), dùng để gộp PDF/ảnh
+Giai đoạn sau cần thêm: pdf.min.js + pdf.worker.min.js (PDF.js), tesseract.min.js + worker + core + vie.traineddata.

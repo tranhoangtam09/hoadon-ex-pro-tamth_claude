@@ -35,7 +35,7 @@ export async function processBatch({ files, processFile, store, onProgress = () 
       const r = (await processFile(f, { batchId, signal })) || {};
       const id = uid('inv');
       staged.push({ id, batchId, order: staged.length, fileName: f.name, fileType: ext(f.name), size: f.size ?? 0,
-        fields: { ...emptyFields(), ...(r.fields || {}) }, status: r.status || STATUS.UNREAD, notes: r.notes || [] });
+        fields: { ...emptyFields(), ...(r.fields || {}) }, status: r.status || STATUS.UNREAD, notes: r.notes || [], extra: r.extra || null });
       blobs.push({ id, blob: f });
     } catch (e) {
       if (e.name === 'AbortError') throw e;

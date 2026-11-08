@@ -37,15 +37,19 @@ export class IdbStore {
     await done(tx);
   }
   async getFile(id) { return req(this.db.transaction('files').objectStore('files').get(id)); }
+  async setMeta(k, v) { const tx = this.db.transaction('meta', 'readwrite'); tx.objectStore('meta').put(v, k); await done(tx); }
+  async getMeta(k) { return req(this.db.transaction('meta').objectStore('meta').get(k)); }
+  async delMeta(k) { const tx = this.db.transaction('meta', 'readwrite'); tx.objectStore('meta').delete(k); await done(tx); }
+  // Xóa lô hiện tại; KHÔNG xóa mẫu Excel đã tải.
   async clearAll() {
     const tx = this.db.transaction(['meta', 'invoices', 'files'], 'readwrite');
-    ['meta', 'invoices', 'files'].forEach((s) => tx.objectStore(s).clear());
+    tx.objectStore('meta').delete('currentBatch'); tx.objectStore('invoices').clear(); tx.objectStore('files').clear();
     await done(tx);
   }
 }
 
 export class MemoryStore {
-  constructor() { this.batch = null; this.invoices = []; this.files = new Map(); }
+  constructor() { this.meta = new Map(); this.batch = null; this.invoices = []; this.files = new Map(); }
   async init() {}
   async commitBatch(batch, invoices, files) {
     if (this.failNext) { this.failNext = false; throw new Error('Ghi thất bại (giả lập)'); }
@@ -55,5 +59,8 @@ export class MemoryStore {
   async updateInvoice(inv) { this.invoices = this.invoices.map((i) => (i.id === inv.id ? structuredClone(inv) : i)); }
   async deleteInvoices(ids) { this.invoices = this.invoices.filter((i) => !ids.includes(i.id)); ids.forEach((id) => this.files.delete(id)); }
   async getFile(id) { return this.files.get(id); }
+  async setMeta(k, v) { this.meta.set(k, v); }
+  async getMeta(k) { return this.meta.get(k); }
+  async delMeta(k) { this.meta.delete(k); }
   async clearAll() { this.batch = null; this.invoices = []; this.files.clear(); }
 }

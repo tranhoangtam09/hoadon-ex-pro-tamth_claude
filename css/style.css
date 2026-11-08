@@ -4,7 +4,7 @@ body{margin:0;font:14px/1.45 "Segoe UI",system-ui,sans-serif;color:var(--ink);ba
 .top{background:var(--navy);color:#fff;padding:14px 24px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
 .top h1{margin:0;font-size:20px;letter-spacing:.2px}.tag{color:#b9cdea;font-size:13px}
 main{max-width:1280px;margin:0 auto;padding:20px 24px 48px}
-.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:12px;margin-bottom:18px}
 .stat{background:var(--sky);border-left:4px solid var(--navy2);padding:10px 14px}
 .stat b{display:block;font-size:22px;color:var(--navy)}.stat span{color:var(--mute)}
 .stat.review{border-color:var(--warn)}.stat.missing{border-color:var(--warn)}.stat.conflict,.stat.unread{border-color:var(--err)}
@@ -29,3 +29,11 @@ tr:nth-child(even) td{background:#f6f9fd}
 .pill{display:inline-block;padding:1px 8px;font-size:12px;border:1px solid currentColor}
 .pill.ok{color:var(--ok)}.pill.review,.pill.missing{color:#8a6500;background:#fff6d6}.pill.conflict,.pill.error{color:var(--err)}.pill.unread{color:var(--mute)}
 @media (max-width:640px){main{padding:14px}.top{padding:12px 14px}}
+
+.panel{border:1px solid var(--line);padding:14px 18px;margin-bottom:18px}.panel h2{margin:0 0 4px;font-size:16px;color:var(--navy)}
+.tpls{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:8px}
+.tpl{background:var(--sky);padding:10px 14px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.st.ok{color:var(--ok);font-weight:600}.st.bad{color:var(--err);font-weight:600}.opt select{padding:4px 6px;border:1px solid var(--line);font:inherit}
+.btn.go{background:var(--navy);color:#fff}.btn.go:hover{background:var(--navy2)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.mlist{margin:6px 0;padding-left:22px}.mlist li{display:flex;gap:8px;align-items:center;padding:3px 0}
+.mlist .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mlist button{padding:1px 8px;border:1px solid var(--line);background:#fff;cursor:pointer}
